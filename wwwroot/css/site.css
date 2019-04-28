@@ -1,0 +1,85 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-image: url("../images/flowers_1.jpeg");
+    /* background-image: url("../images/Vizcaya_Wedding.jpg"); */
+    /* background-size: cover; */
+}
+
+
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+
+
+
+
+/* animation for flowers starts */
+
+body{--t:.5; --scale:3;}
+svg.root{width:1px;height:1px;position:absolute;left:-100em;}
+svg{
+  width: 100vw;
+  height: 100vh;
+  background:#c5d9fe;
+  fill-opacity:0.75;
+}
+
+symbol{overflow:visible}
+
+svg use{transform:rotate(0deg)); transition:transform calc(var(--t) * 1s);}
+
+svg g.a{transition:transform calc(var(--t) * 1s);}
+svg g.a{transform:scale(var(--scale)) rotate(-90deg);
+filter:url('#f')
+}
+
+
+._2{--n : 2;}
+._3{--n : 3;}
+._4{--n : 4;}
+._5{--n : 5;}
+
+svg .a g:nth-of-type(1){transform:rotate(calc(-.5 * 180deg / var(--n)));}
+svg .a g:nth-of-type(2){transform:rotate(calc( .5 * 180deg / var(--n)));}
+
+svg .a g:nth-of-type(1) use:nth-of-type(2){transform:rotate(calc(-1deg * 180 / var(--n)));}
+svg .a g:nth-of-type(1) use:nth-of-type(3){transform:rotate(calc(-2deg * 180 / var(--n)));}
+svg .a g:nth-of-type(1) use:nth-of-type(4){transform:rotate(calc(-3deg * 180 / var(--n)));}
+svg .a g:nth-of-type(1) use:nth-of-type(5){transform:rotate(calc(-4deg * 180 / var(--n)));}
+
+svg .a g:nth-of-type(2) use:nth-of-type(2){transform:rotate(calc(1deg * 180 / var(--n)));}
+svg .a g:nth-of-type(2) use:nth-of-type(3){transform:rotate(calc(2deg * 180 / var(--n)));}
+svg .a g:nth-of-type(2) use:nth-of-type(4){transform:rotate(calc(3deg * 180 / var(--n)));}
+svg .a g:nth-of-type(2) use:nth-of-type(5){transform:rotate(calc(4deg * 180 / var(--n)));}
+/* animation for flowers ends */

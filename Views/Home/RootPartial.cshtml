@@ -1,0 +1,33 @@
+@using Wedding_Planner.Models
+@model User
+
+
+@{
+    ViewData["Title"] = "Login_Regis";
+}
+
+
+<div class="full-height products row remove-padding">
+  <div class="col-sm-1 h-100 remove-padding"></div>
+  <div class="col-sm-4 h-100 remove-padding">
+
+    <!-- start left content -->
+    <h4 class="pt-4 pb-3">Registration</h4>
+    <h3>Please Register! </h3>
+    <partial name="Index"></partial>    
+    <!-- end left content -->
+</div>
+
+
+
+ <div class="col-sm-1 h-100 remove-padding"></div>
+  <div class="col-sm-1 h-100 remove-padding"></div>
+  <div class="col-sm-4 h-100 remove-padding">
+    <!-- start right content -->
+    <h4 class="pt-4 pb-3">Login</h4>
+    <h3>Please Login!</h3>
+        <partial name="Login"></partial>
+     <!-- end right content -->
+  </div>
+  <div class="col-sm-1 h-100 remove-padding"></div>
+</div>

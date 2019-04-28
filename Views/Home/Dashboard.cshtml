@@ -1,0 +1,66 @@
+@using Wedding_Planner.Models;
+
+@model User;
+
+@{
+    ViewData["Title"] = "Upcoming Weddings";
+}
+
+<h1 class="animation">You signed up successfully!!!</h1>
+<h2>@Model.FirstName</h2>
+<h2>@Model.LastName</h2>
+<a href="/Logout">Logout</a>
+
+
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Wedding</th>
+      <th scope="col">Date</th>
+      <th scope="col">amount of Guest </th>
+       <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+        @foreach(var banana in ViewBag.AllCreatedWeddings)
+       {
+       <tr>
+            <td><a href="/displayWedding/@banana.WeddPlanId">@banana.WedderOne @banana.WedderTwo</a></td>
+            <td>@banana.WeddingDate</td>
+            <td>@banana.GuestList.Count</td>
+            @if (banana.WeddingPlanner == ViewBag.UserInSession)//Banana.WeddingPlanner sveryaet sebya s UserId kto tolko chto Logged In , i esli budet ravno to pozvolyaet udalyat emu
+            {
+                <td><a href="/delete/@banana.WeddPlanId">Delete</a></td>
+            }
+            else
+            {
+                int temp=0;
+                @foreach(var x in banana.GuestList)
+                {
+                    if(ViewBag.UserInSession==x.User.UserId)// User-eto User s classa RSVP v Modeli , satem tochka kotoraya pozvolyaet idti v spisok gde est UserId iz class User
+                    {
+                        temp=x.RSVPId;
+                    }
+                }
+                if(temp==0)
+                {
+
+                    <td><a href="../reserve/@banana.WeddPlanId">RSVP</a></td>
+
+                }
+                else
+                {
+                    <td><a href="../un-reserve/@banana.WeddPlanId">Un-RSVP</a></td>
+                }
+            }
+       </tr>
+       }
+  </tbody>
+</table>
+<br>
+<button><a href="/newWedding">New Wedding</a></button>
+<br>
+<br>
+<br>
+<br>
+
