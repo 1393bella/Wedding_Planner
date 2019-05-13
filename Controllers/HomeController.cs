@@ -285,6 +285,21 @@ namespace Wedding_Planner.Controllers
 
 
 
+        [HttpGet("/delete/{WeddingId}")]
+        public IActionResult Delete (int WeddingId)
+        {   
+            int UserID = (int)HttpContext.Session.GetInt32("UserID");//bolwaya bykva ID eto session
+            User SignedIn = dbContext.UserTable.FirstOrDefault(u => u.UserId == UserID);// session dannye idut sravnivat s basa dannuh UserId ,gde uje sohranilis dannuye user v UserId
+
+
+            WeddPlan ActivityToDelete = dbContext.WeddPlanTable.SingleOrDefault(w => w.WeddPlanId == WeddingId);
+            dbContext.Remove(ActivityToDelete);
+
+            dbContext.SaveChanges();
+            return RedirectToAction ("ResultMatch");
+        }
+
+
 
     }
 }
